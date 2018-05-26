@@ -10,4 +10,11 @@ python 3.x
 
 ## 近期电影的影评
 《复仇者联盟3》 <br>
-![image]()
+![image](https://raw.githubusercontent.com/zhonghaoling/spider/master/douban_movie_jieba/photos/fuchou.jpg) <br>
+
+《后来的我们》 <br>
+![image](https://raw.githubusercontent.com/zhonghaoling/spider/master/douban_movie_jieba/photos/women.jpg)
+
+## 感谢
+源 | Python中文社区 <br>
+文 | 极客猴
