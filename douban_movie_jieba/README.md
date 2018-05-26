@@ -16,10 +16,12 @@ python 3.x
 ![image](https://raw.githubusercontent.com/zhonghaoling/spider/master/douban_movie_jieba/photos/women.jpg) <br>
 
 《超时空同居》<br>
-![image](https://raw.githubusercontent.com/zhonghaoling/spider/master/douban_movie_jieba/photos/chaosikong.jpg) <br>
+![image](https://raw.githubusercontent.com/zhonghaoling/spider/master/douban_movie_jieba/photos/chaoshikong.jpg) <br>
 
 
 ## 感谢
 源 | Python中文社区 <br>
 文 | 极客猴 <br>
 参考: [我爬取豆瓣影评，告诉你《复仇者联盟3》在讲什么？（内附源码）](https://mp.weixin.qq.com/s/2S2c_QJmKFU7mddPK8TK0g)
+
+
