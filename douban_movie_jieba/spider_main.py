@@ -53,19 +53,18 @@ class douban_movie(object):
 
         session = requests.Session()
 
-        # 初始化cookies字典变量
         cookie = {}
-        for item in self.str_cookie.split(";"):
-            name, value = item.strip().split("=", 1)
-            cookie[name] = value
+        # 初始化cookies字典变量
+        if str_cookie == "":
+            cookie = {}
+        else:
+            cookie = {}
+            for item in self.str_cookie.split(";"):
+                name, value = item.strip().split("=", 1)
+                cookie[name] = value
 
-        # cookie = {
-        #     'cookie': self.cookie,
-        # }
-
-        print("cookie:", cookie)
         time.sleep(random.randint(5, 15))
-        response = requests.get(url, headers=header, cookies=cookie, timeout=3)
+        response = requests.get(url, headers=header, cookies={}, timeout=3)
         if response.status_code != 200:
             print(response.status_code)
         return response
@@ -88,14 +87,13 @@ class douban_movie(object):
 
         votes = eachComment.xpath("./h3/span[@class='comment-vote']/span/text()")[0]  # "有用"数
         content = eachComment.xpath("./p/text()")[0]  # 评论内容
-
         commentlist.append(user)
         commentlist.append(watched)
         commentlist.append(rating)
         commentlist.append(comment_time)
         commentlist.append(votes)
         commentlist.append(content.strip())
-        # print(user, watched, rating, comment_time, votes, content.strip())
+        print(user, watched, rating, comment_time, votes, content.strip())
         return commentlist
 
     def split_word(self):
@@ -116,10 +114,8 @@ class douban_movie(object):
 
     def start_spider(self):
         start_url = self.base_url + '?start=0'
-
         number = 1
         html = self.request_get(start_url)
-
         while html.status_code == 200:
             # 获取下一页的 url
             selector = etree.HTML(html.text)
@@ -146,9 +142,7 @@ class douban_movie(object):
                         data.to_csv('./data/yingping.csv', header=False, index=False, mode='a+', encoding='utf-8')
                 except UnicodeEncodeError:
                     print("编码错误, 该数据无法写到文件中, 直接忽略该数据")
-
                 data = []
-
                 html = self.request_get(next_url)
 
 
@@ -156,7 +150,7 @@ if __name__ == '__main__':
     # define the cookie and base_url by yourself
     str_cookie = ""
     # xxx电影的评论首页
-    base_url = "https://movie.douban.com/subject/24773958/comments"
+    base_url = "https://movie.douban.com/subject/27133303/comments"
 
     m = douban_movie(str_cookie=str_cookie, base_url=base_url)
     m.start_spider()
